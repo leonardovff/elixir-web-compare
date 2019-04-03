@@ -3,7 +3,7 @@ defmodule Greeter do
         list
     end 
     def createList(list, i) do
-        createList(list ++ [:rand.uniform(100000000)], i-1)
+        createList(list ++ [1], i-1)
     end
 end
 
@@ -12,7 +12,7 @@ defmodule Example.HelloWorldPlug do
 
   def init(options), do: options
   def call(conn, _opts) do
-    Enum.join(Enum.sort(Greeter.createList([], 15000)))
+    Enum.sort(Greeter.createList([], 15000))
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(200, '{"teste": "oi"}')
