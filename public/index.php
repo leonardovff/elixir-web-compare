@@ -6,11 +6,11 @@ ini_set('display_errors', 1);
 function createList($size){
     $list = [];
     for($i = 0; $i < $size; $i++ ){
-        array_push($list, 1);
+        array_push($list, rand(1,1000000));
     }
     return $list;
 }
-$teste = createList(15000);
+$teste = createList(2000000);
 //sort($teste);
 //echo count($teste);
 header("Content-type: application/json");

@@ -1,9 +1,6 @@
 defmodule Greeter do
-    def createList(list, i) when i <= 0 do
-        list
-    end 
-    def createList(list, i) do
-        createList(list ++ [1], i-1)
+    def createList(i) do
+      Enum.map(Enum.to_list(1..i), &(&1 * Enum.random(1..1000000)))
     end
 end
 
@@ -12,7 +9,7 @@ defmodule Example.HelloWorldPlug do
 
   def init(options), do: options
   def call(conn, _opts) do
-    Enum.sort(Greeter.createList([], 15000))
+    Enum.sort(Greeter.createList(2000000))
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(200, '{"teste": "oi"}')
